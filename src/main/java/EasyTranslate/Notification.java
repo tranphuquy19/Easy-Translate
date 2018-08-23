@@ -27,9 +27,12 @@ public class Notification {
 			this.txt = txt;
 		try {
 			if (GoogleTranslate.detectLanguage(txt).equals("vi") == false) {
+				//Phát hiện ngôn ngữ
 				System.out.println(GoogleTranslate.detectLanguage(txt));
+				//Dịch sang TV
 				this.trans = (String) GoogleTranslate.translate("vi", txt.replaceAll("\\n", " ").toLowerCase());
 			} else
+				// to English
 				this.trans = (String) GoogleTranslate.translate("en", txt);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,9 +43,11 @@ public class Notification {
 
 	public void displayTray() throws AWTException, MalformedURLException {
 		SystemTray tray = SystemTray.getSystemTray();
+		//icon notification windows
 		Image image = Toolkit.getDefaultToolkit()
 				.createImage("C:\\Users\\" + user + "\\Documents\\EasyTranslate\\icon.png");
 		TrayIcon trayIcon = new TrayIcon(image);
+		//Sửa size ảnh tự động
 		trayIcon.setImageAutoSize(true);
 		trayIcon.setToolTip("Easy Translate");
 		tray.add(trayIcon);
