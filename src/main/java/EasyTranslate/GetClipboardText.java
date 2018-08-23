@@ -14,10 +14,11 @@ public class GetClipboardText extends Thread {
 	public void run() {
 		String path = System.clearProperty("user.name").toString();
 		String path_java = path.replace('\\', '/');
-
+		//path_java : is username of computer
 		while (true) {
 			String temp = "";
 			try {
+				//Lấy string từ clipboard
 				temp = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
 			} catch (HeadlessException e) {
 				// TODO Auto-generated catch block
